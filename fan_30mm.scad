@@ -18,14 +18,35 @@ module fan_30mm_quarter(){
     }
 }
 
+module fan_30mm_quarter_square(){
+    difference(){
+        translate([7.5, 7.5, 5]){
+            cube([15, 15, 10], center=true);
+        }
+        cylinder(r = 14.2, h = 100, $fn=180, center=true);
+        translate([12, 12]){
+            cylinder(r = 1.75, h = 50, center = true, $fn = 90);
+        }
+    }
+  }
+
 module fan_no_center(){
                 for(n = [0:3]){
                 rotate([0, 0, 90 * n]){
                    fan_30mm_quarter();  
                 }
             }
-    
     }
+    //fan_no_center();
+    
+  module fan_no_center_square(){
+              for(n = [0:3]){
+              rotate([0, 0, 90 * n]){
+                 fan_30mm_quarter_square();  
+              }
+          }
+  }
+  fan_no_center_square();
 
 module f(){
     intersection(){
@@ -52,4 +73,4 @@ module fan_30mm_2d(){
     }
 }
     
-fan_30mm();
+//fan_30mm();
